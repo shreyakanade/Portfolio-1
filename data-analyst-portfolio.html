@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Analyst Portfolio — Shreya Kanade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+  <meta name="description" content="Professional data analyst portfolio with project gallery, skills, and a dynamic project-add form.">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      --maxw:1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071022 0%, #081226 60%);color:#e6eef6}
+    .container{max-width:var(--maxw);margin:36px auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c5cff);display:grid;place-items:center;font-weight:800;color:#041023}
+    .name{line-height:1}
+    .name h1{margin:0;font-size:20px;font-weight:700}
+    .name p{margin:0;font-size:12px;color:var(--muted)}
+    nav{display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer;color:var(--muted);font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#7c5cff);color:#041023;border:0}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns: 1fr 420px;gap:24px;margin-top:26px;align-items:center}
+    .card{background:linear-gradient(180deg,var(--glass), var(--glass-2));border-radius:var(--radius);padding:20px}
+    .intro h2{margin:0;font-size:28px}
+    .intro p{color:var(--muted);margin-top:10px}
+    .stats{display:flex;gap:12px;margin-top:14px}
+    .stat{background:rgba(255,255,255,0.02);padding:12px;border-radius:12px;min-width:120px;text-align:center}
+    .stat h3{margin:0}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* Projects */
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin:26px 0}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;min-height:170px;display:flex;flex-direction:column;gap:8px}
+    .project-card img{width:100%;height:110px;object-fit:cover;border-radius:8px}
+    .project-meta{display:flex;justify-content:space-between;align-items:center}
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px;border-radius:8px;background:rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* Form */
+    .form{display:grid;gap:10px}
+    input, textarea, select{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:10px;color:inherit}
+    textarea{min-height:90px}
+
+    /* Footer */
+    footer{margin-top:28px;padding:18px;border-radius:12px;background:transparent;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media(max-width:1000px){.hero{grid-template-columns:1fr;}.projects{grid-template-columns:repeat(2,1fr)} }
+    @media(max-width:640px){.projects{grid-template-columns:1fr}.container{padding:16px}.logo{width:48px;height:48px}}
+
+    /* small interactions */
+    .fade-in{animation:fade 700ms ease both}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">DA</div>
+        <div class="name">
+          <h1>Shreya Kanade</h1>
+          <p>Data Analyst • Python • SQL • Visualization</p>
+        </div>
+      </div>
+      <nav>
+        <button class="btn" id="downloadBtn">Download</button>
+        <button class="btn" id="addProjectBtn">+ Add Project</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card intro fade-in">
+          <h2>Professional Data Analyst</h2>
+          <p>Turning raw data into clear, actionable insights. Skilled in exploratory analysis, dashboarding, and predictive modeling.
+          </p>
+          <div class="stats">
+            <div class="stat"><h3>12+</h3><p style="color:var(--muted);font-size:13px">Projects</p></div>
+            <div class="stat"><h3>Freshers</h3><p style="color:var(--muted);font-size:13px">Years Experience</p></div>
+            <div class="stat"><h3>10k</h3><p style="color:var(--muted);font-size:13px">Rows analyzed (avg)</p></div>
+          </div>
+
+          <div class="skills">
+            <span class="chip">Python</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Scikit-learn</span>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:8px">
+            <a href="#projects" class="btn primary">See Projects</a>
+            <a href="#contact" class="btn">Contact</a>
+          </div>
+        </div>
+
+        <aside class="card fade-in" style="height:100%">
+          <h3>Contact</h3>
+          <p style="color:var(--muted);margin-top:6px">kanadeshreya3244@gmail.com<br>+91 9579462138<br>LinkedIn / GitHub</p>
+
+          <h3 style="margin-top:14px">Quick Skills</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+            <div class="chip">Exploratory Data Analysis</div>
+            <div class="chip">Data Cleaning &amp; ETL</div>
+            <div class="chip">Dashboarding</div>
+            <div class="chip">Predictive Modeling</div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects">
+        <div class="section-title">
+          <h2>Selected Projects</h2>
+          <div style="color:var(--muted);font-size:14px">Showcasing dashboards, EDA &amp; predictive analytics</div>
+        </div>
+
+        <div class="projects" id="projectsGrid"><article class="project-card fade-in">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&amp;w=800&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;s=0f7b4b3e2a6e3b8ea6d5d9b1e7f5e0a4" alt="Customer Churn Analysis" onerror="this.style.display='none'">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div style="flex:1">
+              <h3 style="margin:6px 0">Customer Churn Analysis</h3>
+              <p style="color:var(--muted);margin:0;font-size:13px">Predicting churn using classification</p>
+            </div>
+            <div style="margin-left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="1" onclick="viewProject(event)">View</button>
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="1" onclick="deleteProject(event)">Delete</button>
+            </div>
+          </div>
+          <p style="margin-top:8px;color:var(--muted);font-size:13px">Built a churn prediction model with 85% accuracy and a dashboard for non-technical stakeholders.</p>
+          <div class="project-meta" style="margin-top:auto">
+            <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Classification</span><span class="tag">Dashboard</span></div>
+            <div style="color:var(--muted);font-size:12px">ID: 1</div>
+          </div>
+        </article><article class="project-card fade-in">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&amp;w=800&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;s=1234567890abcdef" alt="Sales Forecasting" onerror="this.style.display='none'">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div style="flex:1">
+              <h3 style="margin:6px 0">Sales Forecasting</h3>
+              <p style="color:var(--muted);margin:0;font-size:13px">Time-series forecasting for retail</p>
+            </div>
+            <div style="margin-left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="2" onclick="viewProject(event)">View</button>
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="2" onclick="deleteProject(event)">Delete</button>
+            </div>
+          </div>
+          <p style="margin-top:8px;color:var(--muted);font-size:13px">Implemented ARIMA &amp; Prophet models to forecast weekly sales with an RMSE improvement of 12%.</p>
+          <div class="project-meta" style="margin-top:auto">
+            <div class="tags"><span class="tag">Time-Series</span><span class="tag">Prophet</span><span class="tag">Forecasting</span></div>
+            <div style="color:var(--muted);font-size:12px">ID: 2</div>
+          </div>
+        </article><article class="project-card fade-in">
+          <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&amp;w=800&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;s=abcdef1234567890" alt="Customer Segmentation" onerror="this.style.display='none'">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div style="flex:1">
+              <h3 style="margin:6px 0">Customer Segmentation</h3>
+              <p style="color:var(--muted);margin:0;font-size:13px">K-Means segmentation &amp; RFM analysis</p>
+            </div>
+            <div style="margin-left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="3" onclick="viewProject(event)">View</button>
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="3" onclick="deleteProject(event)">Delete</button>
+            </div>
+          </div>
+          <p style="margin-top:8px;color:var(--muted);font-size:13px">Segmented customers into 4 actionable groups; targeted campaigns increased conversion by 9%.</p>
+          <div class="project-meta" style="margin-top:auto">
+            <div class="tags"><span class="tag">Clustering</span><span class="tag">RFM</span><span class="tag">SQL</span><span class="tag">Dashboard</span></div>
+            <div style="color:var(--muted);font-size:12px">ID: 3</div>
+          </div>
+        </article></div>
+
+        <div style="margin-top:18px">
+          <small style="color:var(--muted)">Tip: Use the Add Project button to include a new project (saved locally in your browser).</small>
+        </div>
+      </section>
+
+      <section style="margin-top:26px">
+        <div class="section-title">
+          <h2>About / Summary</h2>
+        </div>
+        <div class="card">
+          <p style="color:var(--muted)">Data analyst with experience in cleaning messy datasets, building dashboards for stakeholders, and creating predictive models that drive decisions. Comfortable working with SQL, Python, and visualization tools to tell a data story.</p>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:18px">
+        <div class="section-title"><h2>Contact &amp; Download</h2></div>
+        <div class="card" style="display:flex;flex-direction:column;gap:8px">
+          <p style="color:var(--muted)">Email: kanadeshreya3244@gmail.com • LinkedIn:https://www.linkedin.com/in/shreya-kanade-99666b229/  • GitHub: https://github.com/shreyakanade?tab=repositories</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn" href="mailto:your.email@example.com">Email</a>
+            <a class="btn" href="#" id="exportJson">Export Projects (JSON)</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year">2025</span> Shreya Kanade — Data Analyst</div>
+      <div style="color:var(--muted);font-size:13px">Built with HTML • CSS • Vanilla JS</div>
+    </footer>
+  </div>
+
+  <!-- Modal for Add Project -->
+  <div id="projectModal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:50">
+    <div style="width:92%;max-width:760px;background:linear-gradient(180deg,#071026,#0b1420);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+      <h3 style="margin:0 0 8px 0">Add New Project</h3>
+      <form id="projectForm" class="form">
+        <input type="text" id="title" placeholder="Project Title" required="">
+        <input type="text" id="subtitle" placeholder="Short subtitle (e.g., 'Sales Forecasting')">
+        <input type="text" id="image" placeholder="Image URL (optional)">
+        <textarea id="description" placeholder="Short description / impact (max 200 chars)"></textarea>
+        <input type="text" id="tags" placeholder="Tags (comma separated), e.g., SQL, Python, Dashboard">
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button type="button" class="btn" id="cancelAdd">Cancel</button>
+          <button type="submit" class="btn primary">Add Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Utilities & initial data
+    const sampleProjects = [
+      {id:1,title:'Customer Churn Analysis',subtitle:'Predicting churn using classification',image:'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=0f7b4b3e2a6e3b8ea6d5d9b1e7f5e0a4',description:'Built a churn prediction model with 85% accuracy and a dashboard for non-technical stakeholders.',tags:['Python','SQL','Classification','Dashboard']},
+      {id:2,title:'Sales Forecasting',subtitle:'Time-series forecasting for retail',image:'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=1234567890abcdef',description:'Implemented ARIMA & Prophet models to forecast weekly sales with an RMSE improvement of 12%.',tags:['Time-Series','Prophet','Forecasting']},
+      {id:3,title:'Customer Segmentation',subtitle:'K-Means segmentation & RFM analysis',image:'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef1234567890',description:'Segmented customers into 4 actionable groups; targeted campaigns increased conversion by 9%.',tags:['Clustering','RFM','SQL','Dashboard']}
+    ];
+
+    // DOM refs
+    const projectsGrid = document.getElementById('projectsGrid');
+    const addProjectBtn = document.getElementById('addProjectBtn');
+    const projectModal = document.getElementById('projectModal');
+    const projectForm = document.getElementById('projectForm');
+    const cancelAdd = document.getElementById('cancelAdd');
+    const exportJson = document.getElementById('exportJson');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Load + render
+    function loadProjects(){
+      const stored = localStorage.getItem('da_projects');
+      if(stored){
+        try{ return JSON.parse(stored); }catch(e){ localStorage.removeItem('da_projects'); }
+      }
+      localStorage.setItem('da_projects', JSON.stringify(sampleProjects));
+      return sampleProjects;
+    }
+
+    function saveProjects(list){ localStorage.setItem('da_projects', JSON.stringify(list)); }
+
+    function renderProjects(){
+      const list = loadProjects();
+      projectsGrid.innerHTML = '';
+      list.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'project-card fade-in';
+        card.innerHTML = `
+          ${p.image ? `<img src="${p.image}" alt="${p.title}" onerror="this.style.display='none'" />` : ''}
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div style="flex:1">
+              <h3 style="margin:6px 0">${p.title}</h3>
+              <p style="color:var(--muted);margin:0;font-size:13px">${p.subtitle || ''}</p>
+            </div>
+            <div style="margin-left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="${p.id}" onclick="viewProject(event)">View</button>
+              <button class="btn" style="font-size:12px;padding:6px 8px" data-id="${p.id}" onclick="deleteProject(event)">Delete</button>
+            </div>
+          </div>
+          <p style="margin-top:8px;color:var(--muted);font-size:13px">${p.description}</p>
+          <div class="project-meta" style="margin-top:auto">
+            <div class="tags">${(p.tags||[]).map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+            <div style="color:var(--muted);font-size:12px">ID: ${p.id}</div>
+          </div>
+        `;
+        projectsGrid.appendChild(card);
+      })
+    }
+
+    // Modal handlers
+    addProjectBtn.addEventListener('click', ()=>{ projectModal.style.display='flex'; });
+    cancelAdd.addEventListener('click', ()=>{ projectModal.style.display='none'; projectForm.reset(); });
+    projectModal.addEventListener('click', (e)=>{ if(e.target===projectModal){ projectModal.style.display='none'; projectForm.reset(); }});
+
+    projectForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const list = loadProjects();
+      const id = Date.now();
+      const title = document.getElementById('title').value.trim();
+      const subtitle = document.getElementById('subtitle').value.trim();
+      const image = document.getElementById('image').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const tags = document.getElementById('tags').value.split(',').map(s=>s.trim()).filter(Boolean);
+      const proj = {id,title,subtitle,image,description,tags};
+      list.unshift(proj);
+      saveProjects(list);
+      renderProjects();
+      projectModal.style.display='none';
+      projectForm.reset();
+    });
+
+    // View & Delete
+    window.viewProject = function(e){
+      const id = Number(e.currentTarget.dataset.id);
+      const list = loadProjects();
+      const p = list.find(x=>x.id===id);
+      if(!p) return alert('Project not found');
+      const content = `Title: ${p.title}\n\n${p.subtitle ? p.subtitle + '\n\n' : ''}${p.description}\n\nTags: ${(p.tags||[]).join(', ')}`;
+      alert(content);
+    }
+
+    window.deleteProject = function(e){
+      const id = Number(e.currentTarget.dataset.id);
+      if(!confirm('Delete this project?')) return;
+      let list = loadProjects().filter(x=>x.id!==id);
+      saveProjects(list);
+      renderProjects();
+    }
+
+    // Export JSON
+    exportJson.addEventListener('click', ()=>{
+      const data = localStorage.getItem('da_projects') || '[]';
+      const blob = new Blob([data], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'da_projects.json'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Simple download of page as HTML file
+    downloadBtn.addEventListener('click', ()=>{
+      const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'data-analyst-portfolio.html'; a.click(); URL.revokeObjectURL(url);
+    });
+
+    // Init
+    renderProjects();
+  </script>
+
+
+</body></html>
